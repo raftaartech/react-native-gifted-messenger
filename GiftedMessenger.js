@@ -202,7 +202,7 @@ class GiftedMessenger extends Component {
       text: this.state.text.trim(),
       name: this.props.senderName,
       image: this.props.senderImage,
-      position: 'right',
+      bubblePosition: 'right',
       date: new Date(),
     };
     if (this.props.onCustomSend) {
@@ -352,13 +352,13 @@ class GiftedMessenger extends Component {
   filterStatus(messages) {
     let lastStatusIndex = 0;
     for (let i = 0; i < messages.length; i++) {
-      if (messages[i].position === 'right') {
+      if (messages[i].bubblePosition === 'right') {
         lastStatusIndex = i;
       }
     }
 
     for (let i = 0; i < lastStatusIndex; i++) {
-      if (messages[i].position === 'right') {
+      if (messages[i].bubblePosition === 'right') {
         if (messages[i].status !== 'ErrorButton') {
           delete messages[i].status;
         }
@@ -491,7 +491,7 @@ class GiftedMessenger extends Component {
           displayNames={this.props.displayNames}
           displayNamesInsideBubble={this.props.displayNamesInsideBubble}
           diffMessage={diffMessage}
-          position={rowData.position}
+          position={rowData.bubblePosition}
           forceRenderImage={this.props.forceRenderImage}
           onImagePress={this.props.onImagePress}
           onMessageLongPress={this.props.onMessageLongPress}
